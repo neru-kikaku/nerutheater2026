@@ -238,6 +238,16 @@ body {
   margin-bottom: 18px;
 }
 
+/* セクション内の小見出し（締め切り／参加したい企画を選んでタップ） */
+.group-label {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--lavender-light);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
 /* 締切バナー（何の締切か一目でわかるよう縦積み＋ラベル付き） */
 .deadline-banner {
   display: flex;
@@ -251,8 +261,8 @@ body {
   gap: 12px;
   border-radius: 10px;
   padding: 12px 14px;
-  border: 1px solid rgba(201,168,76,0.3);
-  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(155,125,212,0.35);
+  background: rgba(155,125,212,0.10);
 }
 .deadline-chip .d-info { flex: 1; min-width: 0; }
 .deadline-chip .d-emoji {
@@ -269,7 +279,7 @@ body {
 .deadline-chip .d-date {
   font-size: 20px;
   font-weight: 800;
-  color: var(--gold-glow);
+  color: var(--lavender-light);
   letter-spacing: 0.5px;
   white-space: nowrap;
   flex-shrink: 0;
@@ -452,9 +462,9 @@ body {
   color: var(--cream-soft);
 }
 .meta-pill.deadline {
-  color: var(--gold-glow);
-  border-color: rgba(201,168,76,0.3);
-  background: rgba(201,168,76,0.08);
+  color: var(--lavender-light);
+  border-color: rgba(155,125,212,0.35);
+  background: rgba(155,125,212,0.10);
 }
 
 /* CTAボタン */
@@ -611,11 +621,18 @@ body {
   font-style: normal;
   color: var(--lavender-light);
 }
-/* トレカ完成イメージ枠 */
+/* トレカ完成イメージ枠（縦・横2枚を並べる） */
+.trca-image-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 14px auto 6px;
+}
 .trca-image {
-  margin: 14px auto 4px;
   width: 130px;
-  height: 182px;             /* トレカ比率 5:7 */
+  height: 182px;             /* トレカ比率 5:7（縦） */
   border-radius: 10px;
   border: 1px dashed rgba(201,168,76,0.5);
   background: rgba(255,255,255,0.03);
@@ -628,7 +645,17 @@ body {
   line-height: 1.6;
   overflow: hidden;
 }
+.trca-image--yoko {
+  width: 182px;
+  height: 130px;             /* トレカ比率 7:5（横） */
+}
 .trca-image img { width: 100%; height: 100%; object-fit: cover; }
+.trca-image-caption {
+  font-size: 12px;
+  color: var(--cream-dim);
+  line-height: 1.6;
+  margin-top: 4px;
+}
 
 /* ─────────────────────────────────────────
    スケジュール
@@ -867,9 +894,9 @@ body {
   <!-- ─── 募集プログラム板（＝全体像が一目でわかる） ─── -->
   <section class="program-board" aria-label="募集している企画の一覧">
     <div class="program-title">企 画 一 覧</div>
-    <div class="program-sub">参加したい企画を選んでタップ</div>
 
     <!-- 締切バナー：3企画は共通締切、ファンアートのみ別 -->
+    <div class="group-label">締 め 切 り</div>
     <div class="deadline-banner">
       <!-- DEADLINE: メッセージ・アンケート・写真の共通締切 -->
       <div class="deadline-chip">
@@ -890,6 +917,7 @@ body {
     </div>
 
     <!-- 演目リスト（各カードへジャンプ） -->
+    <div class="program-sub">参加したい企画を選んでタップ</div>
     <nav class="program-list">
       <a class="program-row is-main" href="#act-message">
         <span class="p-icon">💌</span>
@@ -1058,11 +1086,18 @@ body {
       <div class="trca-hook">
         <div class="th-lead">応募作品は…</div>
         <div class="th-main">あなたの作品が<br><em>トレカ</em>になって<br>ねるちゃんへプレゼント🎁</div>
-        <!-- TRADING_CARD_IMAGE: トレカ完成イメージ。画像ができたら下の<div>の中身を
-             <img src="TRADING_CARD_IMAGE" alt="トレカ完成イメージ"> に差し替えてください -->
-        <div class="trca-image">
-          トレカ完成<br>イメージ
+        <!-- TRADING_CARD_IMAGE: 縦・横それぞれの完成イメージを images/ フォルダに配置してください -->
+        <div class="trca-image-group">
+          <div class="trca-image">
+            <img src="images/card-tate.png" alt="トレカ完成イメージ（縦）">
+          </div>
+          <div class="trca-image trca-image--yoko">
+            <img src="images/card-yoko.png" alt="トレカ完成イメージ（横）">
+          </div>
         </div>
+        <p class="trca-image-caption">
+          ※過去作品を使用したサンプルです。縦・横どちらの構図でもOK！
+        </p>
       </div>
       <div class="act-meta">
         <!-- DEADLINE: ファンアート締切 -->
