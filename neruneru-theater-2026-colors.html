@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ねるねるシアター2026 カラー基準</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+
+  :root {
+    --day-bg:      #FCE9E2;
+    --day-panel:   #FEF6F2;
+    --day-ink:     #8C7877;
+    --day-rule:    #E8CFC6;
+    --night-bg:    #2A2150;
+    --night-panel: #362B63;
+    --night-ink:   #DCD2EE;
+    --night-rule:  #574A8C;
+    --gold:        #C9A84C;
+  }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    font-family: "Zen Maru Gothic", system-ui, sans-serif;
+    line-height: 1.75;
+    background: var(--day-bg);
+    color: var(--day-ink);
+  }
+
+  .act { padding: 3.5rem 1.25rem 4rem; }
+  .act--night { background: var(--night-bg); color: var(--night-ink); }
+  .inner { max-width: 860px; margin: 0 auto; }
+
+  /* ── 見出し ─────────────────────────── */
+  .eyebrow {
+    font-family: "Shippori Mincho", serif;
+    font-size: .72rem; letter-spacing: .34em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 .6rem;
+  }
+  h1 {
+    font-family: "Shippori Mincho", serif;
+    font-weight: 600;
+    font-size: clamp(1.5rem, 5.5vw, 2.1rem);
+    letter-spacing: .04em;
+    margin: 0 0 .3rem;
+  }
+  .sub { margin: 0 0 2.5rem; font-size: .88rem; opacity: .8; }
+
+  h2 {
+    font-family: "Shippori Mincho", serif;
+    font-weight: 600;
+    font-size: 1.02rem;
+    letter-spacing: .1em;
+    margin: 2.8rem 0 .9rem;
+    padding-bottom: .45rem;
+    border-bottom: 1px solid var(--day-rule);
+  }
+  .act--night h2 { border-bottom-color: var(--night-rule); }
+  h2:first-of-type { margin-top: 0; }
+
+  /* ── スウォッチ ──────────────────────── */
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+    gap: .7rem;
+    margin: 0 0 1.4rem;
+    padding: 0; list-style: none;
+  }
+  .chip {
+    border: none; padding: 0; margin: 0;
+    font: inherit; color: inherit; text-align: left;
+    background: var(--day-panel);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    display: block; width: 100%;
+    box-shadow: 0 1px 0 rgba(0,0,0,.06);
+    transition: transform .12s ease;
+  }
+  .act--night .chip { background: var(--night-panel); box-shadow: none; }
+  .chip:hover { transform: translateY(-2px); }
+  .chip:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  .chip .fill { height: 66px; display: block; }
+  .chip .meta { padding: .5rem .65rem .65rem; }
+  .chip .role { display: block; font-size: .8rem; font-weight: 500; }
+  .chip .hex {
+    display: block; margin-top: .1rem;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-size: .78rem; letter-spacing: .04em; opacity: .85;
+  }
+  .chip .from {
+    display: inline-block; margin-top: .35rem;
+    font-size: .62rem; letter-spacing: .06em;
+    padding: .1rem .42rem; border-radius: 99px;
+  }
+  .from--fixed { background: rgba(201,168,76,.2); color: #9A7C2A; }
+  .act--night .from--fixed { color: #E4CE8D; }
+  .from--draft { background: rgba(140,120,119,.14); }
+  .act--night .from--draft { background: rgba(220,210,238,.14); }
+
+  /* ── グラデ3案 ─────────────────────── */
+  .ramps { display: grid; gap: .9rem; margin-bottom: 1.4rem; }
+  @media (min-width: 620px) { .ramps { grid-template-columns: repeat(3, 1fr); } }
+  .ramp {
+    background: var(--night-panel);
+    border-radius: 10px; overflow: hidden;
+  }
+  .ramp .bar { height: 132px; display: block; }
+  .ramp .name {
+    padding: .55rem .7rem .15rem;
+    font-size: .82rem; font-weight: 500;
+  }
+  .ramp .vals {
+    padding: 0 .7rem .7rem;
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: .7rem; line-height: 1.7; opacity: .8;
+  }
+
+  /* ── 表 ───────────────────────────── */
+  table { width: 100%; border-collapse: collapse; font-size: .84rem; margin-bottom: 1.2rem; }
+  th, td { text-align: left; padding: .5rem .5rem .5rem 0; vertical-align: top; }
+  thead th { font-size: .72rem; letter-spacing: .1em; opacity: .6; font-weight: 500; }
+  tbody tr { border-top: 1px solid var(--day-rule); }
+  .act--night tbody tr { border-top-color: var(--night-rule); }
+  td code {
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: .8rem;
+  }
+  .dot {
+    display: inline-block; width: .72em; height: .72em;
+    border-radius: 3px; margin-right: .35em;
+    vertical-align: -.06em;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.12);
+  }
+
+  .note {
+    font-size: .82rem;
+    padding: .9rem 1rem;
+    border-left: 2px solid var(--gold);
+    background: rgba(255,255,255,.45);
+    border-radius: 0 8px 8px 0;
+    margin: 0 0 1.2rem;
+  }
+  .act--night .note { background: rgba(255,255,255,.05); }
+  .note p { margin: 0 0 .5rem; }
+  .note p:last-child { margin-bottom: 0; }
+
+  ul.plain { padding-left: 1.15em; font-size: .84rem; margin: 0 0 1.2rem; }
+  ul.plain li { margin-bottom: .35rem; }
+
+  .toast {
+    position: fixed; left: 50%; bottom: 1.4rem;
+    transform: translate(-50%, 1.6rem);
+    background: #241A3D; color: #F5EFE4;
+    font-size: .8rem; padding: .5rem 1.05rem;
+    border-radius: 99px;
+    opacity: 0; pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease;
+  }
+  .toast.on { opacity: 1; transform: translate(-50%, 0); }
+
+  footer {
+    padding: 2rem 1.25rem 3rem;
+    background: var(--night-bg); color: var(--night-ink);
+    font-size: .76rem; text-align: center; opacity: .55;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ Vol.1 ═══ -->
+<section class="act">
+  <div class="inner">
+    <p class="eyebrow">Vol.1</p>
+    <h1>MATINÉE ─ Star Celebration</h1>
+    <p class="sub">A5スクエア／ピンク × クリーム。タップでコピーできます。</p>
+
+    <h2>チケットフレーム（確定・修正不可）</h2>
+    <ul class="swatches">
+      <li><button class="chip" data-hex="#FCDCE6"><span class="fill" style="background:#FCDCE6"></span><span class="meta"><span class="role">🎀 ピンク 地色</span><span class="hex">#FCDCE6</span><span class="from from--fixed">確定</span></span></button></li>
+      <li><button class="chip" data-hex="#FDF5D7"><span class="fill" style="background:#FDF5D7"></span><span class="meta"><span class="role">🌙 ゴールド 地色</span><span class="hex">#FDF5D7</span><span class="from from--fixed">確定</span></span></button></li>
+      <li><button class="chip" data-hex="#FBDA56"><span class="fill" style="background:#FBDA56"></span><span class="meta"><span class="role">🌙 ゴールド 線</span><span class="hex">#FBDA56</span><span class="from from--fixed">確定</span></span></button></li>
+      <li><button class="chip" data-hex="#EFE6F8"><span class="fill" style="background:#EFE6F8"></span><span class="meta"><span class="role">💜 ラベンダー 地色</span><span class="hex">#EFE6F8</span><span class="from from--fixed">確定</span></span></button></li>
+      <li><button class="chip" data-hex="#AE93D8"><span class="fill" style="background:#AE93D8"></span><span class="meta"><span class="role">💜 ラベンダー 線</span><span class="hex">#AE93D8</span><span class="from from--fixed">確定</span></span></button></li>
+      <li><button class="chip" data-hex="#F6FCFB"><span class="fill" style="background:#F6FCFB"></span><span class="meta"><span class="role">☆ ミント 地色</span><span class="hex">#F6FCFB</span><span class="from from--fixed">確定</span></span></button></li>
+      <li><button class="chip" data-hex="#8FCFC0"><span class="fill" style="background:#8FCFC0"></span><span class="meta"><span class="role">☆ ミント 線</span><span class="hex">#8FCFC0</span><span class="from from--fixed">確定</span></span></button></li>
+    </ul>
+
+    <h2>メッセージ文字色（確定・かなっぴさんが入力）</h2>
+    <ul class="swatches">
+      <li><button class="chip" data-hex="#6B4653"><span class="fill" style="background:#FCDCE6"><span style="display:block;height:100%;display:flex;align-items:center;justify-content:center;color:#6B4653;font-size:.8rem;font-weight:500;">あいうえお</span></span><span class="meta"><span class="role">🎀 ピンク 文字</span><span class="hex">#6B4653</span><span class="from from--fixed">確定</span></span></button></li>
+      <li><button class="chip" data-hex="#6B5D3A"><span class="fill" style="background:#FDF5D7"><span style="display:block;height:100%;display:flex;align-items:center;justify-content:center;color:#6B5D3A;font-size:.8rem;font-weight:500;">あいうえお</span></span><span class="meta"><span class="role">🌙 きいろ 文字</span><span class="hex">#6B5D3A</span><span class="from from--fixed">確定</span></span></button></li>
+      <li><button class="chip" data-hex="#3F5A52"><span class="fill" style="background:#F6FCFB"><span style="display:block;height:100%;display:flex;align-items:center;justify-content:center;color:#3F5A52;font-size:.8rem;font-weight:500;">あいうえお</span></span><span class="meta"><span class="role">☆ ミント 文字</span><span class="hex">#3F5A52</span><span class="from from--fixed">確定</span></span></button></li>
+      <li><button class="chip" data-hex="#5A4A72"><span class="fill" style="background:#EFE6F8"><span style="display:block;height:100%;display:flex;align-items:center;justify-content:center;color:#5A4A72;font-size:.8rem;font-weight:500;">あいうえお</span></span><span class="meta"><span class="role">💜 むらさき 文字</span><span class="hex">#5A4A72</span><span class="from from--fixed">確定</span></span></button></li>
+    </ul>
+    <p style="font-size:.82rem;opacity:.85;margin:-.6rem 0 1.4rem;">コントラスト比 5.9〜7.2。4色とも同系統の濃色なので、チケットごとに文字の色が変わって見えます。書体は Zen Maru Gothic Medium 9pt。</p>
+
+    <h2>誌面用</h2>
+    <ul class="swatches">
+      <li><button class="chip" data-hex="#FCE9E2"><span class="fill" style="background:#FCE9E2"></span><span class="meta"><span class="role">ベース（背景・余白）</span><span class="hex">#FCE9E2</span><span class="from from--fixed">キービジュ実測</span></span></button></li>
+      <li><button class="chip" data-hex="#FEF2F5"><span class="fill" style="background:#FEF2F5"></span><span class="meta"><span class="role">表紙まわりの淡い方</span><span class="hex">#FEF2F5</span><span class="from from--fixed">既存表紙</span></span></button></li>
+      <li><button class="chip" data-hex="#FE9FB2"><span class="fill" style="background:#FE9FB2"></span><span class="meta"><span class="role">主役ピンク</span><span class="hex">#FE9FB2</span><span class="from from--fixed">キービジュ実測</span></span></button></li>
+      <li><button class="chip" data-hex="#8C7877"><span class="fill" style="background:#8C7877"></span><span class="meta"><span class="role">本文文字（チケット以外）</span><span class="hex">#8C7877</span><span class="from from--draft">未確定</span></span></button></li>
+    </ul>
+
+    <div class="note">
+      <p><strong>主役ピンク #FE9FB2 はR255。</strong>CMYK変換で必ず落ちるので、画面上で「少し派手かな」で止めておく。</p>
+      <p><strong>ゴールドはチケットの #FBDA56 が基準。</strong>くすんだベージュ金で罫線を作ると、チケットと並んだとき沈んで見える。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Vol.2 ═══ -->
+<section class="act act--night">
+  <div class="inner">
+    <p class="eyebrow">Vol.2</p>
+    <h1>SOIRÉE ─ Moonlit Stage</h1>
+    <p class="sub">A4／トワイライト。3案から選定中（かなっぴさん・ぱるかちゃん）。</p>
+
+    <h2>グラデ3案</h2>
+    <div class="ramps">
+      <div class="ramp">
+        <span class="bar" style="background:linear-gradient(#B29DD6,#6652A0,#3A2E6E)"></span>
+        <p class="name">1. おうどうトワイライト</p>
+        <p class="vals">#B29DD6<br>#6652A0<br>#3A2E6E</p>
+      </div>
+      <div class="ramp">
+        <span class="bar" style="background:linear-gradient(#ABA0DC,#6155A5,#322D69)"></span>
+        <p class="name">2. あおみ・よぞら</p>
+        <p class="vals">#ABA0DC<br>#6155A5<br>#322D69</p>
+      </div>
+      <div class="ramp">
+        <span class="bar" style="background:linear-gradient(#C4B0E2,#7E65B2,#493876)"></span>
+        <p class="name">3. やわらか・じょうびん</p>
+        <p class="vals">#C4B0E2<br>#7E65B2<br>#493876</p>
+      </div>
+    </div>
+
+    <h2>橋渡しページ（本文1P目・上端だけピンク寄せ）</h2>
+    <div class="ramps">
+      <div class="ramp">
+        <span class="bar" style="background:linear-gradient(#C79FD2,#6652A0,#3A2E6E)"></span>
+        <p class="name">1 用</p>
+        <p class="vals">上端 #C79FD2</p>
+      </div>
+      <div class="ramp">
+        <span class="bar" style="background:linear-gradient(#BE9BD4,#6155A5,#322D69)"></span>
+        <p class="name">2 用</p>
+        <p class="vals">上端 #BE9BD4</p>
+      </div>
+      <div class="ramp">
+        <span class="bar" style="background:linear-gradient(#D4A8DA,#7E65B2,#493876)"></span>
+        <p class="name">3 用</p>
+        <p class="vals">上端 #D4A8DA</p>
+      </div>
+    </div>
+    <p style="font-size:.82rem;opacity:.8;margin:-.4rem 0 1.4rem;">中間・下端は各案のまま据え置き。上端のみ R+20〜25 / B−5 前後。</p>
+
+    <h2>ページ背景の割り振り</h2>
+    <table>
+      <thead><tr><th>ページ</th><th>背景</th><th>ねらい</th></tr></thead>
+      <tbody>
+        <tr><td>表紙</td><td>グラデ（深め）</td><td>閉まった幕</td></tr>
+        <tr><td>本文1P目</td><td>グラデ（ピンク寄せ）</td><td>夕暮れの残光・Vol.1からの橋渡し</td></tr>
+        <tr><td>STARRING</td><td>最暗ベタ</td><td>暗転。金の窓で宣材写真をマスク</td></tr>
+        <tr><td>ACT扉</td><td>グラデ</td><td>場面転換</td></tr>
+        <tr><td>本文・年表・アンケート</td><td>ベタ（中間色）</td><td>情報量が多いので安定させる</td></tr>
+        <tr><td>INTERMISSION</td><td>ベタ（明るめ）</td><td>ロビーに出た感じ</td></tr>
+        <tr><td>結び</td><td>グラデ</td><td>「本日はまだ、終演しておりません。」</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.82rem;opacity:.8;margin:-.4rem 0 1.4rem;">ベタの色は採用案のグラデ上から抜く。橋渡しの下端＝STARRINGのベタ色にすると、めくった瞬間に色がつながる。</p>
+
+    <h2>STARRINGの金の窓</h2>
+    <ul class="plain">
+      <li>宣材写真は水色フォグに輪郭が溶けているので、切り抜きではなくアーチ／楕円のクリッピングマスクで処理</li>
+      <li>金の縁は0.5pt以上、または二重線。細すぎると濃紫の上で飛ぶ</li>
+      <li>縁は単色ではなくグラデ（濃→明→濃）にすると金属感が出る</li>
+      <li>窓は3案とも同じにして、比較で変わるのは背景の紫だけにする</li>
+    </ul>
+
+    <h2>入稿前チェック</h2>
+    <ul class="plain">
+      <li>グラデのレイヤーにノイズ 0.5〜1%（均等・グレースケール）→ バンディング防止</li>
+      <li>最暗部のKが40%を超えていないか（紫のまま暗いこと）</li>
+      <li>総インキ量 300%以下</li>
+      <li>濃紫背景の白抜き文字は、明朝の細ウェイトを9pt以下で使わない</li>
+      <li>しまうまプリントはRGB入稿可。最終はテンプレートで確認</li>
+    </ul>
+  </div>
+</section>
+
+<footer>ねるねるシアター2026 ／ 最終更新 2026.08.09</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+  const toast = document.getElementById('toast');
+  let timer;
+  document.querySelectorAll('.chip').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      const hex = chip.dataset.hex;
+      const done = function () {
+        toast.textContent = hex + ' をコピーしました';
+        toast.classList.add('on');
+        clearTimeout(timer);
+        timer = setTimeout(function () { toast.classList.remove('on'); }, 1600);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(hex).then(done).catch(function () {
+          toast.textContent = hex;
+          toast.classList.add('on');
+          clearTimeout(timer);
+          timer = setTimeout(function () { toast.classList.remove('on'); }, 1600);
+        });
+      } else {
+        toast.textContent = hex;
+        toast.classList.add('on');
+        clearTimeout(timer);
+        timer = setTimeout(function () { toast.classList.remove('on'); }, 1600);
+      }
+    });
+  });
+</script>
+</body>
+</html>
