@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ねるねるシアター2026 ─ 制作報告資料</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Zen+Maru+Gothic:wght@400;500;700;900&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink-deep: #1a1229;
+    --ink-mid: #2d1f42;
+    --stage-purple: #4a2f6b;
+    --lavender: #b8a3d9;
+    --lavender-soft: #d8cceb;
+    --gold: #d9bd7a;
+    --gold-soft: #ecd9a8;
+    --pink: #f0c4d4;
+    --cream: #f7f2ec;
+    --paper: #fbf8f3;
+    --ok-green: #7c9a7e;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(184,163,217,0.10), transparent 55%),
+      radial-gradient(ellipse at 90% 100%, rgba(217,189,122,0.06), transparent 50%),
+      linear-gradient(180deg, var(--ink-deep) 0%, var(--ink-mid) 45%, var(--stage-purple) 100%);
+    background-attachment: fixed;
+    color: var(--cream);
+    font-family: "Zen Maru Gothic", sans-serif;
+    line-height:1.85;
+    letter-spacing: 0.02em;
+  }
+
+  /* film-grain / stardust overlay */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    pointer-events:none;
+    background-image: radial-gradient(rgba(255,255,255,0.55) 0.6px, transparent 0.6px);
+    background-size: 90px 90px;
+    opacity:0.06;
+    z-index:0;
+  }
+
+  .curtain-top{
+    position:relative;
+    text-align:center;
+    padding: 90px 24px 70px;
+    overflow:hidden;
+  }
+  .curtain-top::before, .curtain-top::after{
+    content:"";
+    position:absolute;
+    top:0; bottom:0;
+    width:14%;
+    background: repeating-linear-gradient(90deg, rgba(74,47,107,0.55) 0px, rgba(74,47,107,0.25) 12px, rgba(26,18,41,0.55) 24px);
+    opacity:0.5;
+  }
+  .curtain-top::before{ left:0; }
+  .curtain-top::after{ right:0; transform: scaleX(-1); }
+
+  .eyebrow{
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+    letter-spacing:0.35em;
+    text-transform:uppercase;
+    color: var(--lavender);
+    font-size:13px;
+    margin-bottom:22px;
+  }
+  h1.title{
+    font-family:"Shippori Mincho", serif;
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight:600;
+    margin:0 0 14px;
+    color: var(--gold-soft);
+    text-shadow: 0 0 30px rgba(217,189,122,0.25);
+  }
+  .subtitle{
+    font-family:"Cormorant Garamond", serif;
+    font-size: clamp(15px, 2vw, 19px);
+    color: var(--lavender-soft);
+    letter-spacing:0.12em;
+  }
+  .date-stamp{
+    margin-top:26px;
+    display:inline-block;
+    font-size:12px;
+    letter-spacing:0.15em;
+    color: var(--ink-deep);
+    background: var(--gold-soft);
+    padding:6px 18px;
+    border-radius:2px;
+    position:relative;
+  }
+  .date-stamp::before,.date-stamp::after{
+    content:"";
+    position:absolute; top:0; bottom:0;
+    width:8px;
+    background: repeating-radial-gradient(circle at center, var(--ink-mid) 0 2px, transparent 2px 5px);
+  }
+  .date-stamp::before{ left:-4px; }
+  .date-stamp::after{ right:-4px; }
+
+  .container{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px 140px;
+    position:relative;
+    z-index:1;
+  }
+
+  /* pre-share notice box - most prominent element on the page */
+  .preshare-box{
+    background: linear-gradient(135deg, rgba(217,189,122,0.14), rgba(184,163,217,0.08));
+    border: 1.5px solid rgba(217,189,122,0.5);
+    border-radius: 14px;
+    padding: 26px 28px;
+    margin: 0 0 40px;
+    box-shadow: 0 0 40px rgba(217,189,122,0.08);
+  }
+  .preshare-box .preshare-label{
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color: var(--gold);
+    font-size:12px;
+    display:block;
+    margin-bottom:12px;
+  }
+  .preshare-box p{
+    margin:0;
+    font-size:15px;
+    color: var(--cream);
+    line-height:1.9;
+  }
+  .preshare-box p + p{ margin-top:10px; }
+  .preshare-box .no-reply{
+    color: var(--lavender-soft);
+    font-size:13.5px;
+    opacity:0.9;
+  }
+
+  /* 3 points to check first */
+  .first-points{
+    margin: 0 0 60px;
+  }
+  .first-points-title{
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+    color: var(--lavender);
+    font-size:13px;
+    letter-spacing:0.15em;
+    text-align:center;
+    margin-bottom:18px;
+  }
+  .first-points-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:14px;
+  }
+  @media (max-width:640px){ .first-points-grid{ grid-template-columns:1fr; } }
+  .point-card{
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(216,204,235,0.18);
+    border-radius: 12px;
+    padding: 20px 18px;
+    text-align:center;
+  }
+  .point-card .point-num{
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+    color: var(--gold);
+    font-size:13px;
+    letter-spacing:0.1em;
+    display:block;
+    margin-bottom:10px;
+  }
+  .point-card p{
+    margin:0;
+    font-size:13.5px;
+    color: var(--lavender-soft);
+    line-height:1.7;
+  }
+
+  /* why two volumes - strong standalone section */
+  .why-section{
+    margin: 0 0 70px;
+    padding: 34px 30px;
+    border-radius:16px;
+    background: linear-gradient(160deg, rgba(184,163,217,0.10), rgba(240,196,212,0.05));
+    border: 1px solid rgba(216,204,235,0.25);
+  }
+  .why-title{
+    font-family:"Shippori Mincho", serif;
+    font-size: clamp(20px, 3vw, 26px);
+    color: var(--gold-soft);
+    text-align:center;
+    margin: 0 0 28px;
+  }
+  .why-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:18px;
+    margin-bottom: 20px;
+  }
+  @media (max-width:600px){ .why-grid{ grid-template-columns:1fr; } }
+  .why-card{
+    border-radius:12px;
+    padding:22px 20px;
+  }
+  .why-card.matinee{
+    background: rgba(240,196,212,0.10);
+    border:1px solid rgba(240,196,212,0.3);
+  }
+  .why-card.soiree{
+    background: rgba(184,163,217,0.12);
+    border:1px solid rgba(184,163,217,0.35);
+  }
+  .why-card .why-tag{
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+    font-size:12px;
+    letter-spacing:0.18em;
+    display:block;
+    margin-bottom:8px;
+  }
+  .why-card.matinee .why-tag{ color: var(--pink); }
+  .why-card.soiree .why-tag{ color: var(--lavender); }
+  .why-card h4{
+    font-family:"Shippori Mincho", serif;
+    font-size:17px;
+    margin:0 0 8px;
+    color: var(--cream);
+  }
+  .why-card p{ margin:0; font-size:13.5px; color: var(--lavender-soft); }
+  .why-arrow{
+    text-align:center;
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+    color: var(--gold);
+    font-size:13px;
+    letter-spacing:0.1em;
+    margin: 4px 0 18px;
+  }
+  .why-curtaincall{
+    text-align:center;
+    padding: 18px 20px;
+    border-radius:10px;
+    background: rgba(217,189,122,0.10);
+    border: 1px dashed rgba(217,189,122,0.4);
+    margin-bottom:20px;
+  }
+  .why-curtaincall .why-tag{
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+    font-size:12px;
+    letter-spacing:0.18em;
+    color: var(--gold);
+    display:block;
+    margin-bottom:6px;
+  }
+  .why-curtaincall p{ margin:0; font-size:13.5px; color: var(--cream); }
+  .why-surprise{
+    text-align:center;
+    font-size:14px;
+    color: var(--gold-soft);
+    font-style:italic;
+    font-family:"Shippori Mincho", serif;
+    line-height:1.9;
+    padding-top:6px;
+    border-top: 1px solid rgba(217,189,122,0.2);
+  }
+
+  /* budget backing card */
+  .budget-check{
+    margin: 22px 0 0;
+    padding: 20px 22px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(217,189,122,0.3);
+  }
+  .budget-check .budget-label{
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+    letter-spacing:0.15em;
+    color: var(--gold);
+    font-size:12px;
+    display:block;
+    margin-bottom:14px;
+  }
+  .budget-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-size:14px;
+  }
+  .budget-row:last-of-type{ border-bottom:none; }
+  .budget-row .budget-vol{ color: var(--cream); }
+  .budget-row .budget-price{
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+    color: var(--gold-soft);
+    font-size:15px;
+    white-space:nowrap;
+  }
+  .budget-note{
+    margin-top:12px;
+    font-size:13px;
+    color: var(--lavender-soft);
+    opacity:0.9;
+  }
+
+  /* section purpose line */
+  .act-purpose{
+    display:inline-block;
+    font-size:12.5px;
+    color: var(--lavender);
+    background: rgba(184,163,217,0.1);
+    border:1px solid rgba(184,163,217,0.25);
+    padding:4px 12px;
+    border-radius:20px;
+    margin-bottom:16px;
+    letter-spacing:0.03em;
+  }
+
+  /* details/summary collapsibles */
+  details.collapse-block{
+    border: 1px solid rgba(216,204,235,0.18);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.02);
+    margin-bottom: 20px;
+    overflow:hidden;
+  }
+  details.collapse-block summary{
+    cursor:pointer;
+    padding: 18px 22px;
+    font-family:"Shippori Mincho", serif;
+    font-size:15px;
+    color: var(--gold-soft);
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    user-select:none;
+  }
+  details.collapse-block summary::-webkit-details-marker{ display:none; }
+  details.collapse-block summary::before{
+    content:"▸";
+    color: var(--gold);
+    transition: transform 0.2s ease;
+    font-size:12px;
+  }
+  details.collapse-block[open] summary::before{
+    transform: rotate(90deg);
+  }
+  details.collapse-block .collapse-inner{
+    padding: 0 22px 24px;
+  }
+
+  /* legend */
+  .legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    justify-content:center;
+    margin: 0 0 60px;
+    padding: 20px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(216,204,235,0.15);
+    border-radius: 10px;
+  }
+  .legend-item{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    color: var(--lavender-soft);
+  }
+  .legend-dot{
+    width:11px; height:11px; border-radius:50%;
+    flex-shrink:0;
+  }
+  .dot-decided{ background: var(--gold); box-shadow:0 0 8px rgba(217,189,122,0.6); }
+  .dot-proposal{ background: var(--lavender); box-shadow:0 0 8px rgba(184,163,217,0.6); }
+  .dot-pending{ background: transparent; border:1.5px dashed var(--pink); opacity:0.6; }
+
+  /* act divider - like a scene marker */
+  .act-divider{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    margin: 90px 0 36px;
+  }
+  .act-divider:first-of-type{ margin-top:0; }
+  .act-number{
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+    font-size:15px;
+    color: var(--gold);
+    white-space:nowrap;
+    letter-spacing:0.15em;
+  }
+  .act-line{
+    flex:1;
+    height:1px;
+    background: linear-gradient(90deg, rgba(217,189,122,0.5), transparent);
+  }
+  h2.act-title{
+    font-family:"Shippori Mincho", serif;
+    font-size: clamp(22px, 3.4vw, 30px);
+    color: var(--gold-soft);
+    margin: 0 0 8px;
+    font-weight:600;
+  }
+  .act-desc{
+    font-size:14px;
+    color: var(--lavender-soft);
+    margin-bottom: 30px;
+    opacity:0.9;
+  }
+
+  /* status tags styled as ticket stubs */
+  .status-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:11.5px;
+    letter-spacing:0.08em;
+    padding: 4px 12px 4px 10px;
+    border-radius: 3px;
+    font-weight:700;
+    margin-bottom:14px;
+    position:relative;
+  }
+  .status-tag.decided{
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+    color: var(--ink-deep);
+  }
+  .status-tag.proposal{
+    background: rgba(184,163,217,0.18);
+    border:1px solid var(--lavender);
+    color: var(--lavender-soft);
+  }
+  .status-tag.pending{
+    background: transparent;
+    border: 1px dashed rgba(240,196,212,0.35);
+    color: rgba(240,196,212,0.65);
+    font-weight:500;
+  }
+
+  .card{
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(216,204,235,0.14);
+    border-radius: 14px;
+    padding: 28px 26px;
+    margin-bottom: 22px;
+    backdrop-filter: blur(2px);
+  }
+  .card h3{
+    font-family:"Shippori Mincho", serif;
+    font-size:18px;
+    color: var(--cream);
+    margin: 4px 0 12px;
+    font-weight:600;
+  }
+  .card p{ margin: 0 0 10px; font-size:14.5px; color: var(--lavender-soft); }
+  .card p:last-child{ margin-bottom:0; }
+  .card ul{ margin:10px 0; padding-left:20px; }
+  .card li{ font-size:14.5px; color: var(--lavender-soft); margin-bottom:6px; }
+  .card strong{ color: var(--gold-soft); font-weight:700; }
+
+  /* table styling for act structure */
+  .program-table{
+    width:100%;
+    border-collapse: collapse;
+    margin: 8px 0 6px;
+    font-size:14px;
+  }
+  .program-table th{
+    text-align:left;
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+    color: var(--gold);
+    font-weight:500;
+    letter-spacing:0.05em;
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(217,189,122,0.35);
+    font-size:13px;
+  }
+  .program-table td{
+    padding: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: var(--cream);
+    vertical-align:top;
+  }
+  .program-table tr:last-child td{ border-bottom:none; }
+  .program-table .num{ color: var(--lavender); font-family:"Cormorant Garamond", serif; font-style:italic; width:34px; }
+  .program-table .pages{ color: var(--gold-soft); white-space:nowrap; text-align:right; }
+
+  /* two-cover facing spread */
+  .facing-covers{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 10px 0 4px;
+  }
+  @media (max-width:560px){ .facing-covers{ grid-template-columns:1fr; } }
+  .cover-card{
+    border-radius:12px;
+    padding:22px 20px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .cover-card.vol1{
+    background: linear-gradient(160deg, rgba(240,196,212,0.14), rgba(255,255,255,0.03));
+    border: 1px solid rgba(240,196,212,0.35);
+  }
+  .cover-card.vol2{
+    background: linear-gradient(160deg, rgba(184,163,217,0.16), rgba(74,47,107,0.25));
+    border: 1px solid rgba(184,163,217,0.4);
+  }
+  .cover-card .tag{
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+    font-size:12px;
+    letter-spacing:0.2em;
+    display:block;
+    margin-bottom:10px;
+  }
+  .cover-card.vol1 .tag{ color:var(--pink); }
+  .cover-card.vol2 .tag{ color:var(--lavender); }
+  .cover-card h4{
+    font-family:"Shippori Mincho", serif;
+    font-size:19px;
+    margin:0 0 8px;
+    color: var(--cream);
+  }
+  .cover-card .meta{ font-size:12.5px; color:var(--lavender-soft); opacity:0.85; }
+  .cover-card .placeholder{
+    margin-top:14px;
+    height:120px;
+    border-radius:8px;
+    border:1px dashed rgba(255,255,255,0.25);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    color: rgba(255,255,255,0.4);
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+  }
+  .cover-card .cover-image{
+    margin-top:14px;
+    width:100%;
+    aspect-ratio: 3 / 4;
+    border-radius:8px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.15);
+  }
+  .cover-card .cover-image img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    object-position: center top;
+    display:block;
+  }
+
+  /* assignment map table */
+  .assign-grid{ display:flex; flex-direction:column; gap:14px; }
+  .assign-row{
+    display:grid;
+    grid-template-columns: 110px 1fr;
+    gap:16px;
+    padding:16px 0;
+    border-bottom:1px solid rgba(255,255,255,0.07);
+  }
+  .assign-row:last-child{ border-bottom:none; }
+  .assign-name{
+    font-family:"Shippori Mincho", serif;
+    color: var(--gold-soft);
+    font-size:15px;
+    font-weight:600;
+  }
+  .assign-detail p{ margin:0 0 6px; font-size:14px; color:var(--lavender-soft); }
+  .assign-detail .small{ font-size:12.5px; opacity:0.75; }
+
+  /* timeline / schedule */
+  .schedule-list{ list-style:none; margin:0; padding:0; }
+  .schedule-list li{
+    display:grid;
+    grid-template-columns: 120px 1fr;
+    gap:14px;
+    padding:12px 0;
+    border-bottom:1px solid rgba(255,255,255,0.06);
+    font-size:14px;
+  }
+  .schedule-list li:last-child{ border-bottom:none; }
+  .schedule-date{ color: var(--gold); font-family:"Cormorant Garamond", serif; font-style:italic; font-size:14px; white-space:nowrap; }
+  .schedule-detail{ color: var(--cream); }
+
+  /* copy draft - styled like ticket / program lines */
+  .copy-block{
+    border-left: 2px solid var(--gold);
+    padding: 6px 0 6px 18px;
+    margin: 16px 0;
+  }
+  .copy-block .label{
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+    color: var(--gold);
+    font-size:12.5px;
+    letter-spacing:0.1em;
+    display:block;
+    margin-bottom:4px;
+  }
+  .copy-block .line{
+    font-family:"Shippori Mincho", serif;
+    font-size:15px;
+    color: var(--cream);
+    line-height:1.9;
+  }
+
+  /* pending list */
+  .pending-list{ list-style:none; margin:0; padding:0; }
+  .pending-list li{
+    display:flex;
+    gap:12px;
+    padding: 14px 0;
+    border-bottom: 1px dashed rgba(240,196,212,0.25);
+    font-size:14px;
+    color: var(--lavender-soft);
+  }
+  .pending-list li:last-child{ border-bottom:none; }
+  .pending-list .ticket-icon{
+    flex-shrink:0;
+    color: var(--pink);
+    font-size:14px;
+    margin-top:2px;
+  }
+
+  footer{
+    text-align:center;
+    padding: 60px 24px 100px;
+    color: var(--lavender-soft);
+    font-size:13px;
+    opacity:0.7;
+    font-family:"Cormorant Garamond", serif;
+    font-style:italic;
+    letter-spacing:0.08em;
+  }
+  footer .curtain-close{
+    font-size:12px;
+    color: var(--gold);
+    margin-bottom:10px;
+    letter-spacing:0.25em;
+  }
+
+  ::selection{ background: var(--lavender); color: var(--ink-deep); }
+
+  @media (prefers-reduced-motion: no-preference){
+    .reveal{
+      animation: fadeUp 0.7s ease both;
+    }
+    @keyframes fadeUp{
+      from{ opacity:0; transform: translateY(14px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="curtain-top">
+  <span class="eyebrow">Report for チーム</span>
+  <h1 class="title">ねるねるシアター 2026</h1>
+  <div class="subtitle">制作報告 ─ Vol.1 MATINÉE / Vol.2 SOIRÉE</div>
+  <div class="date-stamp">2026 . 08 . 11 現在</div>
+</div>
+
+<div class="container">
+
+  <div class="preshare-box reveal">
+    <span class="preshare-label">本日の報告</span>
+    <p>アルバムは<strong>MATINÉE／SOIRÉEの2冊構成で進めます。</strong></p>
+    <p class="no-reply">基本方針は決まっているので、このまま進めます。異論があれば教えてください。</p>
+  </div>
+
+  <div class="first-points">
+    <div class="first-points-title">— 今日共有すること —</div>
+    <div class="first-points-grid">
+      <div class="point-card">
+        <span class="point-num">Ⅰ</span>
+        <p>なぜ2冊にするのか</p>
+      </div>
+      <div class="point-card">
+        <span class="point-num">Ⅱ</span>
+        <p>MATINÉEとSOIRÉEで何が違うのか</p>
+      </div>
+      <div class="point-card">
+        <span class="point-num">Ⅲ</span>
+        <p>2冊を渡すことで、ねるちゃんへの小さなサプライズにもなること</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- なぜ2冊なのか（独立セクション） -->
+  <div class="why-section">
+    <h2 class="why-title">なぜ、2冊なのか</h2>
+    <div class="why-grid">
+      <div class="why-card matinee">
+        <span class="why-tag">VOL.1 — MATINÉE</span>
+        <h4>ファンからねるちゃんへ</h4>
+        <p>祝福を届ける、昼公演。</p>
+      </div>
+      <div class="why-card soiree">
+        <span class="why-tag">VOL.2 — SOIRÉE</span>
+        <h4>この1年のねるちゃんを</h4>
+        <p>振り返る、夜公演。</p>
+      </div>
+    </div>
+    <div class="why-arrow">↓</div>
+    <div class="why-curtaincall">
+      <span class="why-tag">CURTAIN CALL</span>
+      <p>生誕イベント当日に手渡すことで、現実の場で物語が完成します。</p>
+    </div>
+    <p class="why-surprise">受け取った瞬間に「2冊あるの！？」と驚いてもらえることも、<br>世界観とつながった小さな演出です。</p>
+
+    <div class="budget-check">
+      <span class="budget-label">Budget Check ── 印刷代目安</span>
+      <div class="budget-row">
+        <span class="budget-vol">Vol.1（A5スクエア）</span>
+        <span class="budget-price">730〜850円</span>
+      </div>
+      <div class="budget-row">
+        <span class="budget-vol">Vol.2（A4）</span>
+        <span class="budget-price">1,920〜2,140円</span>
+      </div>
+      <p class="budget-note">2冊合わせても予算内。2冊体制は費用面でも問題ありません。</p>
+    </div>
+  </div>
+
+  <div class="legend reveal">
+    <div class="legend-item"><span class="legend-dot dot-decided"></span>決定・進行中</div>
+    <div class="legend-item"><span class="legend-dot dot-proposal"></span>相談したいポイント</div>
+    <div class="legend-item"><span class="legend-dot dot-pending"></span>後日検討</div>
+  </div>
+
+  <!-- 1. 全体構造 -->
+  <div class="act-divider">
+    <span class="act-number">Prologue</span>
+    <span class="act-line"></span>
+  </div>
+  <h2 class="act-title">全体構造</h2>
+  <span class="act-purpose">まずここだけご確認ください</span>
+  <p class="act-desc">2冊構成＋現実で完結する三部構造。「終わり」を紙面に書かない設計です。</p>
+
+  <div class="card">
+    <span class="status-tag decided">決定</span>
+    <h3>2冊構成の骨格</h3>
+    <ul>
+      <li><strong>Vol.1『MATINÉE ─ Star Celebration』</strong>（A5スクエア／ピンク×クリーム＋ミント・ラベンダー、生誕ビジュアルに寄せて配色決定済み）</li>
+      <li><strong>Vol.2『SOIRÉE ─ Moonlit Stage』</strong>（A4／濃ラベンダー×深紫のトワイライト）</li>
+      <li><strong>CURTAIN CALL＝9/15生誕イベント当日</strong>、本人へ手渡す瞬間（紙面には「終わり」を書かない）</li>
+    </ul>
+    <p>視点の軸：「たくさんの光が輝く舞台で、わたしたちはいつも、ねるちゃんの光を見つけていた」── 比較ではなく愛の視点。</p>
+    <p>Vol.1のベクトルは客席→舞台（祝福が向かう）、Vol.2は舞台→客席（光を見上げる）で対にしています。</p>
+  </div>
+
+  <!-- 2. Vol.2 幕構成 -->
+  <div class="act-divider">
+    <span class="act-number">Act I</span>
+    <span class="act-line"></span>
+  </div>
+  <h2 class="act-title">Vol.2 幕構成</h2>
+  <span class="act-purpose">現時点の制作案です</span>
+  <p class="act-desc">ページ割り目安・計30P以下</p>
+
+  <div class="card">
+    <span class="status-tag decided">決定・進行中</span>
+    <table class="program-table">
+      <thead>
+        <tr><th class="num">#</th><th>章</th><th>内容</th><th style="text-align:right;">目安</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="num">1</td><td>開場</td><td>表紙・扉・ご挨拶</td><td class="pages">2P</td></tr>
+        <tr><td class="num">2</td><td>STARRING</td><td>主演紹介（ねるちゃんプロフィール）</td><td class="pages">2P</td></tr>
+        <tr><td class="num">3</td><td>ACT 1 "Lunar Orbit"</td><td>チェキ・アルバム＋ダイジェスト年表（散らばった写真を本人に返す構成）</td><td class="pages">扉込7P</td></tr>
+        <tr><td class="num">4</td><td>ACT 2 "Audience Voices"</td><td>アンケート結果（Q1衣装/Q2コーデ/Q3推しコンテンツ/Q5役）</td><td class="pages">5〜7P</td></tr>
+        <tr><td class="num">5</td><td>INTERMISSION</td><td>幕間（世界観の合う写真）</td><td class="pages">1〜2P</td></tr>
+        <tr><td class="num">6</td><td>THEATER GOODS</td><td>アクスタ一覧（ショーケース見立て）</td><td class="pages">2P</td></tr>
+        <tr><td class="num">7</td><td>BOUQUET</td><td>トレカリフィル台紙＋サンクス（トレカ＝花束）</td><td class="pages">2P</td></tr>
+        <tr><td class="num">8</td><td>結び</td><td>未完のまま現実へ「本日はまだ、終演しておりません。」</td><td class="pages">1〜2P</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <span class="status-tag decided">決定・進行中</span>
+    <h3 style="margin-top:0;">ACT 1 方針転換 ── コンセプト</h3>
+    <p>公式写真で活動を網羅する構成から、<strong>ファンの手元に残るソロチェキ・ランチェキを集めて見せる構成</strong>に変更しました。</p>
+    <p>公式写真はねるちゃん自身が既に見ているもの。でも配ったチェキは、本人がもう見返せません。<strong>散らばった写真を集めて本人に返すこと</strong>を、このアーカイブの目的に置いています。</p>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0;">ACT 1 の内訳（3部構成）</h3>
+    <p><strong>前半3〜4P「チェキ・アルバム」</strong><br>
+    イベント情報（日付・イベント名・会場の3行のみ）＋チェキ複数をスクラップブック風に配置。説明文なし、写真が主役です。<br>
+    対象：お茶会Vol.4/5/6、悪食令嬢遠隔チェキ、DS9周年、Hoshibako店長イベント等。</p>
+    <p><strong>後半1.5〜2P「ダイジェスト年表」</strong><br>
+    チェキが存在しない活動（マルシェくじ・アクスタ・雑誌・ねるっち）を時系列の帯＋公式写真小で圧縮します。</p>
+    <p><strong>Hoshibako特集1P</strong><br>
+    現状維持（AW新作写真の後入れ設計）。</p>
+    <p style="opacity:0.85; font-size:13.5px;">※可変設計の注記：チェキが集まるほど説明が減ります。0枚のイベントは公式写真1枚＋基本情報で成立するレイアウトにしています。</p>
+    <p>Q4「嬉しかった活動」はアーカイブに吹き出し統合（独立ページなし）。</p>
+    <p><strong>アンケ結果の型：</strong>Q1ランキング型／Q2表彰台＋全14コーデグリッド／Q3タグクラウド（票数＝文字サイズ、簡易版→余裕あれば星図に発展）／Q5キャスティングボード型（ミュージカル系推し作品モチーフを装飾に）。</p>
+  </div>
+
+  <!-- 3. ラスト演出 -->
+  <div class="act-divider">
+    <span class="act-number">Act II</span>
+    <span class="act-line"></span>
+  </div>
+  <h2 class="act-title">ラスト演出・裏表紙・トレカ</h2>
+  <span class="act-purpose">イメージ共有です</span>
+
+  <div class="card">
+    <span class="status-tag pending">後日検討</span>
+    <h3>Vol.2最終ページ</h3>
+    <p><strong>候補A「次回公演予告状スタイル」</strong>（NEXT STAGE ─ CURTAIN CALL 9.15）が有力。B余韻型／C半券型も後日検討。</p>
+  </div>
+
+  <div class="card">
+    <span class="status-tag decided">決定</span>
+    <h3>Vol.1裏表紙 ─ 斜め分割の両A面オマージュ</h3>
+    <p>「めでたすぎて星☆」／「爆裂祝福してる」。左上＝星側、右下＝爆裂側、<strong>両面ともぺこさん担当</strong>で確定しました。</p>
+    <p>歌詞引用はしない。構文オマージュとモチーフ語彙（星・月・太陽・紙吹雪）のみで表現します。</p>
+  </div>
+
+  <div class="card">
+    <span class="status-tag proposal">相談したいポイント</span>
+    <h3>トレカ裏面</h3>
+    <p>共通デザイン（濃紺トワイライト＋NERUNERU THEATERロゴ＋花1種）× 花の色のみイラストごとに変更。キーカラーをスポイトし、8/31締切後に色決めします。</p>
+  </div>
+
+  <!-- 4. イラスト依頼マップ -->
+  <div class="act-divider">
+    <span class="act-number">Act III</span>
+    <span class="act-line"></span>
+  </div>
+  <h2 class="act-title">イラスト依頼マップ</h2>
+  <span class="act-purpose">進行状況の共有です</span>
+  <p class="act-desc">2冊の表紙は「星に乗る／月に乗る」で対。並べると向かい合う設計です。</p>
+
+  <div class="card">
+    <span class="status-tag decided">決定・進行中</span>
+    <div class="assign-grid">
+      <div class="assign-row">
+        <div class="assign-name">ぺこさん</div>
+        <div class="assign-detail">
+          <p>Vol.1表紙挿絵「星に乗るねるちゃん」＋裏表紙両面（星側・爆裂側）</p>
+          <p class="small">るりいろさんはスケジュールの都合で外注に切替。謝礼2,000円で依頼済み</p>
+          <p class="small">納品形式：キャラ切り抜き透過PNG（背景はアキコがPS制作）300dpi相当・長辺2500px以上</p>
+          <p class="small">衣装：生誕ビジュアルが出たので、その衣装（ピンク・クリーム・ミント・ラベンダー）で依頼</p>
+        </div>
+      </div>
+      <div class="assign-row">
+        <div class="assign-name">ぱるかちゃん</div>
+        <div class="assign-detail">
+          <p>Vol.2表紙「月に乗るねるちゃん」（クリィミーマミ系構図・落ち着いたシアター色）</p>
+          <p class="small">依頼済み／納品形式：同上</p>
+        </div>
+      </div>
+      <div class="assign-row">
+        <div class="assign-name">義勝さん</div>
+        <div class="assign-detail">
+          <p>しおざきワンダーランドパロ</p>
+          <p class="small">依頼済み</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="status-tag proposal">相談したいポイント</span>
+    <p style="margin:0;">ぺこさんへの謝礼2,000円の渡し方法について相談したいです。</p>
+  </div>
+
+  <div class="facing-covers">
+    <div class="cover-card vol1">
+      <span class="tag">VOL.1 — MATINÉE</span>
+      <h4>星に乗るねるちゃん</h4>
+      <div class="meta">ぺこさん担当</div>
+      <div class="cover-image">
+        <img src="https://raw.githubusercontent.com/akic016g-rgb/neruneru-test/main/neru-theater-vol2.png" alt="Vol.1 MATINÉE 表紙イメージ">
+      </div>
+    </div>
+    <div class="cover-card vol2">
+      <span class="tag">VOL.2 — SOIRÉE</span>
+      <h4>月に乗るねるちゃん</h4>
+      <div class="meta">ぱるかちゃん担当</div>
+      <div class="cover-image">
+        <img src="https://raw.githubusercontent.com/akic016g-rgb/neruneru-test/main/neru-theater-vol1.png" alt="Vol.2 SOIRÉE 表紙イメージ">
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:22px;">
+    <p style="margin:0;">ワンダーランドパロの置き場所：<strong>Vol.1幕間に1P（または半P）</strong>。</p>
+  </div>
+
+  <!-- 5. 体制・スケジュール -->
+  <div class="act-divider">
+    <span class="act-number">Act IV</span>
+    <span class="act-line"></span>
+  </div>
+  <h2 class="act-title">体制・スケジュール</h2>
+  <span class="act-purpose">進行状況の共有です</span>
+
+  <div class="card">
+    <span class="status-tag decided">決定・進行中</span>
+    <ul class="schedule-list" style="list-style:none; margin:0; padding:0;">
+      <li><span class="schedule-date">8/12</span><span class="schedule-detail">めんやさん・かなっぴさんが集計（選択式Q1-Q3＋Q6）</span></li>
+      <li><span class="schedule-date">8/18まで</span><span class="schedule-detail">ガンチャンさんがQ5集計。間に合わなければ、Q4/Q5とも手の空いた人がジャンルごとに分類</span></li>
+      <li><span class="schedule-date">8/13–16</span><span class="schedule-detail">アキコのメイン稼働週</span></li>
+      <li><span class="schedule-date">完了</span><span class="schedule-detail">アーカイブ全21件の実在検証・素材URL収集完了（誤情報4件を排除済み）。チェックリストCSV準備済み</span></li>
+      <li><span class="schedule-date">8/17頃まで</span><span class="schedule-detail">チェキ画像回収：委員・友人へ声かけ済み</span></li>
+      <li><span class="schedule-date">納品済み</span><span class="schedule-detail">メッセージフレーム4種（確定済み）をかなっぴさんへ納品</span></li>
+      <li><span class="schedule-date">9/1理想<br>9/4デッド</span><span class="schedule-detail">入稿（しまうま出版・300dpi・塗り足し3mm）</span></li>
+    </ul>
+  </div>
+
+  <!-- 6. コピー草案 -->
+  <div class="act-divider">
+    <span class="act-number">Act V</span>
+    <span class="act-line"></span>
+  </div>
+  <h2 class="act-title">コピー草案</h2>
+  <span class="act-purpose">雰囲気確認用です</span>
+  <p class="act-desc">清書前・差し替え可</p>
+
+  <details class="collapse-block">
+    <summary>コピー草案を見る</summary>
+    <div class="collapse-inner">
+      <div class="copy-block">
+        <span class="label">開場（Vol.2）</span>
+        <div class="line">日が暮れて、劇場に月あかりが差しこむ。夜の部の主役は、もう舞台の上に。</div>
+      </div>
+      <div class="copy-block">
+        <span class="label">STARRING</span>
+        <div class="line">わたしたちにとって、唯一無二のスター。</div>
+      </div>
+      <div class="copy-block">
+        <span class="label">ACT 1 扉</span>
+        <div class="line">あなたが配った光は、わたしたちの手元で、ずっと輝いていました。</div>
+      </div>
+      <div class="copy-block">
+        <span class="label">ACT 2 扉</span>
+        <div class="line">舞台を見つめるまなざしの数だけ、言葉が生まれる。</div>
+      </div>
+      <div class="copy-block">
+        <span class="label">INTERMISSION</span>
+        <div class="line">少し休憩。ロビーの窓から見える月も、今夜はきれいです。</div>
+        <div class="line" style="opacity:0.7; font-size:13.5px; margin-top:4px;">（CYNHN写真掲載時）劇場の外では、いつもの4人の物語がつづいている。</div>
+      </div>
+      <div class="copy-block">
+        <span class="label">BOUQUET</span>
+        <div class="line">客席から舞台へ、ひとりひとりの花を。</div>
+      </div>
+      <div class="copy-block">
+        <span class="label">結び</span>
+        <div class="line">拍手の音は、聞こえますか？幕はまだ、下りていません。</div>
+      </div>
+      <div class="copy-block">
+        <span class="label">Vol.1 開幕 / 閉幕</span>
+        <div class="line">「爆裂祝福してる」 ── 「めでたすぎて星！」</div>
+        <div class="line" style="opacity:0.7; font-size:13.5px; margin-top:4px;">昼の最後に星が出て夜公演へ繋ぐ</div>
+      </div>
+    </div>
+  </details>
+
+  <!-- 7. 未完了タスク -->
+  <div class="act-divider">
+    <span class="act-number">Epilogue</span>
+    <span class="act-line"></span>
+  </div>
+  <h2 class="act-title">未完了タスク</h2>
+  <span class="act-purpose">★のみ、今後着手予定です</span>
+
+  <details class="collapse-block">
+    <summary>未完了タスクを見る</summary>
+    <div class="collapse-inner">
+      <ul class="pending-list">
+        <li><span class="ticket-icon">★</span>ラスト演出A/B/C最終選択（ページ制作到達時）</li>
+        <li><span class="ticket-icon">★</span>リフィル型番の選定（これから探すタスク）→BOUQUET台紙設計</li>
+      </ul>
+    </div>
+  </details>
+
+  <div class="preshare-box" style="margin-top:20px;">
+    <p>2冊構成は基本方針として決定しています。異論がなければ、このまま進めます。</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="curtain-close">— Curtain —</div>
+  本日はまだ、終演しておりません。
+</footer>
+
+</body>
+</html>
