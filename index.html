@@ -448,6 +448,11 @@ body {
   background: rgba(255,255,255,0.05);
   border: 1px solid var(--border);
 }
+.status-badge--closed {
+  color: var(--cream-dim);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+}
 /* 開始前カードのCTA（非活性表示） */
 .act-cta--pending {
   display: block;
@@ -463,6 +468,26 @@ body {
   cursor: default;
 }
 .act-cta--pending .cta-sub {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 4px;
+  opacity: 0.8;
+}
+.act-cta--closed {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 15px;
+  background: rgba(255,255,255,0.03);
+  color: var(--cream-dim);
+  border: 1px solid var(--border);
+  cursor: default;
+}
+.act-cta--closed .cta-sub {
   display: block;
   font-size: 12px;
   font-weight: 500;
@@ -938,14 +963,14 @@ body {
   <section class="program-board" aria-label="募集している企画の一覧">
     <div class="program-title">企 画 一 覧</div>
 
-    <!-- 締切バナー：3企画は共通締切、ファンアートのみ別 -->
+    <!-- 締切バナー：メッセージは延長の可能性あり、ファンアートは8/31締切 -->
     <div class="group-label">締 め 切 り</div>
     <div class="deadline-banner">
-      <!-- DEADLINE: メッセージ・アンケート・写真の共通締切 -->
+      <!-- DEADLINE: メッセージ締切（延長の可能性あり） -->
       <div class="deadline-chip">
         <div class="d-info">
-          <span class="d-emoji">💌 📊 📸</span>
-          <span class="d-label">メッセージ・アンケート・写真</span>
+          <span class="d-emoji">💌</span>
+          <span class="d-label">お祝いメッセージ<br><small>※延長の可能性あり</small></span>
         </div>
         <span class="d-date">8/11(火)<small>まで</small></span>
       </div>
@@ -1039,7 +1064,7 @@ body {
     <div class="act-head">
       <div class="act-icon">📊</div>
       <div class="act-info">
-        <div class="act-eyebrow">ファン参加型<span class="status-badge status-badge--open">募集中</span></div>
+        <div class="act-eyebrow">ファン参加型<span class="status-badge status-badge--closed">受付終了</span></div>
         <div class="act-name">アンケート企画</div>
         <div class="act-desc">
           みなさんの声を募集します！
@@ -1061,15 +1086,16 @@ body {
       </div>
       <div class="act-meta">
         <!-- DEADLINE: アンケート締切 -->
-        <span class="meta-pill deadline">📅 8/11(火)まで</span>
+        <span class="meta-pill deadline">📅 8/11(火)受付終了</span>
         <span class="meta-pill">🕊️ 匿名</span>
         <span class="meta-pill">✅ 一部回答OK</span>
       </div>
-      <!-- QUESTIONNAIRE_FORM_URL: 📊 アンケートのフォーム -->
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhW9-Yp07tDzzDCEhXTY3u5fW_2TqaH2sO1c43VnKSdiwg1Q/viewform" target="_blank" rel="noopener" class="act-cta">
-        アンケート回答はこちら
-        <span class="cta-sub">あなたの声がページに！</span>
-      </a>
+      <!-- QUESTIONNAIRE_FORM_URL: 📊 アンケートのフォーム（8/11締切のため受付終了。再開する場合は下のdivを
+           <a href="https://docs.google.com/forms/d/e/1FAIpQLSdhW9-Yp07tDzzDCEhXTY3u5fW_2TqaH2sO1c43VnKSdiwg1Q/viewform" target="_blank" rel="noopener" class="act-cta"> に戻してください -->
+      <div class="act-cta--closed">
+        受付を終了しました
+        <span class="cta-sub">たくさんのご回答ありがとうございました</span>
+      </div>
     </div>
     <div class="act-stub">
       <span>NERUNERU THEATER</span>
@@ -1082,7 +1108,7 @@ body {
     <div class="act-head">
       <div class="act-icon">📸</div>
       <div class="act-info">
-        <div class="act-eyebrow">画像投稿企画<span class="status-badge status-badge--open">募集中</span></div>
+        <div class="act-eyebrow">画像投稿企画<span class="status-badge status-badge--closed">受付終了</span></div>
         <div class="act-name">○○すぎて滅❣️写真募集</div>
         <div class="act-desc">
           好きすぎて滅❣️な、ねるちゃんの写真やスクショを募集しています。<br>各テーマごとに、あなただけの名場面をぜひご応募ください。
@@ -1098,14 +1124,15 @@ body {
       </div>
       <div class="act-meta">
         <!-- DEADLINE: 写真募集締切 -->
-        <span class="meta-pill deadline">📅 8/11(火)まで</span>
+        <span class="meta-pill deadline">📅 8/11(火)受付終了</span>
         <span class="meta-pill">🕊️ 匿名</span>
       </div>
-      <!-- PHOTO_FORM_URL: 📸 写真募集のフォーム -->
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdDHBgXwrsPHMCCCMYFvf87BSlq8CUzd3qgnGXSTDzILpMToQ/viewform" target="_blank" rel="noopener" class="act-cta">
-        写真を送る
-        <span class="cta-sub">1枚からOK！お気軽にご参加ください</span>
-      </a>
+      <!-- PHOTO_FORM_URL: 📸 写真募集のフォーム（8/11締切のため受付終了。再開する場合は下のdivを
+           <a href="https://docs.google.com/forms/d/e/1FAIpQLSdDHBgXwrsPHMCCCMYFvf87BSlq8CUzd3qgnGXSTDzILpMToQ/viewform" target="_blank" rel="noopener" class="act-cta"> に戻してください -->
+      <div class="act-cta--closed">
+        受付を終了しました
+        <span class="cta-sub">たくさんのご応募ありがとうございました</span>
+      </div>
     </div>
     <div class="act-stub">
       <span>NERUNERU THEATER</span>
@@ -1177,18 +1204,18 @@ body {
       <div class="schedule-content">
         <!-- DEADLINE: 募集開始 -->
         <div class="schedule-date" style="color:var(--lavender)">募集中</div>
-        <div class="schedule-task">メッセージ・アンケート・写真・ファンアートを受付中</div>
+        <div class="schedule-task">💌 メッセージ／🎨 ファンアートを受付中<br><small>※メッセージは延長の可能性があります</small></div>
       </div>
     </div>
     <div class="schedule-item">
       <div class="schedule-dot-col">
-        <div class="schedule-dot" style="background:var(--gold)"></div>
+        <div class="schedule-dot" style="background:var(--cream-dim)"></div>
         <div class="schedule-line"></div>
       </div>
       <div class="schedule-content">
-        <!-- DEADLINE: 3企画の共通締切 -->
-        <div class="schedule-date" style="color:var(--gold)">8月11日（火）</div>
-        <div class="schedule-task">💌 メッセージ／📊 アンケート／📸 写真 締切</div>
+        <!-- DEADLINE: アンケート・写真の締切（受付終了済み） -->
+        <div class="schedule-date" style="color:var(--cream-dim)">8月11日（火）</div>
+        <div class="schedule-task">📊 アンケート／📸 写真 締切（受付終了）</div>
       </div>
     </div>
     <div class="schedule-item">
