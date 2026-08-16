@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ねるねるシアター2026 ソロ活動一覧</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600&family=Zen+Maru+Gothic:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :root {
+    --bg: #2A2150;
+    --panel: #362B63;
+    --ink: #DCD2EE;
+    --rule: #574A8C;
+    --gold: #E8D9A8;
+    --warn: #F0A0A8;
+  }
+  body {
+    margin: 0; padding: 2.5rem 1rem 4rem;
+    font-family: "Zen Maru Gothic", system-ui, sans-serif;
+    background: var(--bg); color: var(--ink);
+    line-height: 1.7;
+  }
+  .inner { max-width: 780px; margin: 0 auto; }
+  .eyebrow {
+    font-family: "Shippori Mincho", serif;
+    font-size: .7rem; letter-spacing: .34em;
+    color: var(--gold); margin: 0 0 .5rem;
+  }
+  h1 {
+    font-family: "Shippori Mincho", serif; font-weight: 600;
+    font-size: clamp(1.4rem, 5vw, 1.9rem);
+    margin: 0 0 .4rem; letter-spacing: .04em;
+  }
+  .sub { font-size: .85rem; opacity: .8; margin: 0 0 2rem; }
+  h2 {
+    font-family: "Shippori Mincho", serif; font-weight: 600;
+    font-size: .98rem; letter-spacing: .1em;
+    margin: 2.4rem 0 .3rem; padding-bottom: .4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  h2:first-of-type { margin-top: 0; }
+  .h2note { font-size: .76rem; opacity: .65; margin: 0 0 .9rem; }
+
+  .cards { display: grid; gap: .6rem; margin-bottom: 1rem; }
+  @media (min-width: 640px) { .cards { grid-template-columns: 1fr 1fr; } }
+
+  .card {
+    display: block; width: 100%; text-align: left;
+    font: inherit; color: inherit; cursor: pointer;
+    background: var(--panel); border: 1px solid transparent;
+    border-radius: 10px; padding: .8rem .9rem;
+    transition: border-color .12s ease, transform .12s ease;
+  }
+  .card:hover { transform: translateY(-2px); border-color: var(--rule); }
+  .card:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  .date {
+    font-family: ui-monospace, Menlo, monospace;
+    font-size: .78rem; letter-spacing: .06em;
+    color: var(--gold); display: block;
+  }
+  .name { display: block; font-size: .9rem; font-weight: 500; margin: .1rem 0 .15rem; }
+  .venue { display: block; font-size: .8rem; opacity: .75; }
+  .venue.todo { color: var(--warn); opacity: 1; }
+  .tag {
+    display: inline-block; margin-top: .45rem;
+    font-size: .62rem; letter-spacing: .06em;
+    padding: .1rem .45rem; border-radius: 99px;
+    background: rgba(220,210,238,.13);
+  }
+  .tag.cheki { background: rgba(232,217,168,.2); color: var(--gold); }
+  .tag.online { background: rgba(220,210,238,.09); opacity: .7; }
+
+  .note {
+    font-size: .82rem; padding: .85rem 1rem;
+    border-left: 2px solid var(--gold);
+    background: rgba(255,255,255,.05);
+    border-radius: 0 8px 8px 0; margin: 1.4rem 0;
+  }
+  .note p { margin: 0 0 .5rem; }
+  .note p:last-child { margin: 0; }
+  .note strong { color: var(--gold); }
+
+  .toast {
+    position: fixed; left: 50%; bottom: 1.4rem;
+    transform: translate(-50%, 1.6rem);
+    background: #241A3D; color: #F5EFE4;
+    font-size: .78rem; padding: .5rem 1.05rem;
+    border-radius: 99px; opacity: 0; pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease;
+    white-space: pre-line; text-align: center; line-height: 1.5;
+  }
+  .toast.on { opacity: 1; transform: translate(-50%, 0); }
+  footer { margin-top: 3rem; font-size: .74rem; opacity: .5; text-align: center; }
+</style>
+</head>
+<body>
+<div class="inner">
+
+<p class="eyebrow">ACT 1 / LUNAR ORBIT</p>
+<h1>ソロ活動一覧</h1>
+<p class="sub">2025.09.15 〜 2026.09.15（生誕除く・22件）<br>カードをタップすると「日付／名称／会場」の3行をコピーします。</p>
+
+<div class="note">
+  <p><strong>会場はすべて確定しました。</strong>オンライン施策のみ会場行を持ちません（P2の5ブロック）。</p>
+</div>
+
+<!-- ─── お茶会 ─── -->
+<h2>お茶会シリーズ</h2>
+<p class="h2note">見開き2P・種別のまま維持（Vol.4→5→6の変遷が記録になるため）</p>
+<div class="cards">
+  <button class="card" data-copy="2025.09.22&#10;ねるねるティーパーティー Vol.4 〜Dreamy Birthday〜&#10;カフェ アコリット">
+    <span class="date">2025.09.22</span>
+    <span class="name">ねるねるティーパーティー Vol.4<br>〜Dreamy Birthday〜</span>
+    <span class="venue">カフェ アコリット</span>
+    <span class="tag cheki">チェキあり想定</span>
+  </button>
+  <button class="card" data-copy="2026.03.20&#10;ねるねるティーパーティー Vol.5 〜いちごのおひめさま〜&#10;カフェ アコリット">
+    <span class="date">2026.03.20</span>
+    <span class="name">ねるねるティーパーティー Vol.5<br>〜いちごのおひめさま〜</span>
+    <span class="venue">カフェ アコリット</span>
+    <span class="tag cheki">チェキあり想定</span>
+  </button>
+  <button class="card" data-copy="2026.06.19&#10;ねるねるティーパーティー Vol.6 〜nemophila blue〜&#10;カフェ アコリット">
+    <span class="date">2026.06.19</span>
+    <span class="name">ねるねるティーパーティー Vol.6<br>〜nemophila blue〜</span>
+    <span class="venue">カフェ アコリット</span>
+    <span class="tag cheki">チェキあり想定</span>
+  </button>
+</div>
+
+<!-- ─── ソロ現場 ─── -->
+<h2>ソロ現場・イベント</h2>
+<p class="h2note">P1（悪食令嬢）／P4（星箱＝章末の到達点）</p>
+<div class="cards">
+  <button class="card" data-copy="2025.11.23&#10;TVアニメ「悪食令嬢と狂血公爵」公式POP UPショップ 1日店長&#10;青山ファッションカレッジ">
+    <span class="date">2025.11.23</span>
+    <span class="name">TVアニメ「悪食令嬢と狂血公爵」<br>公式POP UPショップ 1日店長</span>
+    <span class="venue">青山ファッションカレッジ</span>
+    <span class="tag cheki">重め扱い・テキストあり</span>
+  </button>
+  <button class="card" data-copy="2026.01.11&#10;「萌え萌え特典会型インスタレーション」でんぱ組.incエンディング「一年祭」DAY2&#10;マーチエキュート神田万世橋 manseibashi tube">
+    <span class="date">2026.01.11</span>
+    <span class="name">「萌え萌え特典会型インスタレーション」<br>でんぱ組.incエンディング「一年祭」DAY2</span>
+    <span class="venue">マーチエキュート神田万世橋<br>manseibashi tube</span>
+    <span class="tag cheki">チェキ撮影会のみ・メイド衣装</span>
+  </button>
+  <button class="card" data-copy="2026.01.26&#10;月雲ねる ディアステージ9周年イベント！&#10;秋葉原ディアステージ">
+    <span class="date">2026.01.26</span>
+    <span class="name">月雲ねる<br>ディアステージ9周年イベント！</span>
+    <span class="venue">秋葉原ディアステージ</span>
+    <span class="tag cheki">チェキあり想定</span>
+  </button>
+  <button class="card" data-copy="2026.07.26&#10;HoshibakoWorks 月雲ねる 店長イベント&#10;星箱 原宿店">
+    <span class="date">2026.07.26</span>
+    <span class="name">HoshibakoWorks<br>月雲ねる 店長イベント</span>
+    <span class="venue">星箱 原宿店</span>
+    <span class="tag cheki">章末・重め扱い</span>
+  </button>
+</div>
+
+<!-- ─── ロリータ ─── -->
+<h2>ロリータ関連</h2>
+<p class="h2note">P1（ロリータその他）／軽め＝日付＋名称のみ</p>
+<div class="cards">
+  <button class="card" data-copy="2025.11.16&#10;IDOL FILE PRESENTS Lolita Fashion Party&#10;浅草 VAMPKIN">
+    <span class="date">2025.11.16</span>
+    <span class="name">IDOL FILE PRESENTS<br>Lolita Fashion Party</span>
+    <span class="venue">浅草 VAMPKIN</span>
+    <span class="tag">軽め</span>
+  </button>
+  <button class="card" data-copy="2026.05.09&#10;Dear Doll Tea Party the1st drop by #DSPMロリィタ部&#10;MOSKA by GinjerGarden">
+    <span class="date">2026.05.09</span>
+    <span class="name">Dear Doll Tea Party the1st drop<br>by #DSPMロリィタ部</span>
+    <span class="venue">MOSKA by GinjerGarden</span>
+    <span class="tag">軽め・05.24と同衣装</span>
+  </button>
+  <button class="card" data-copy="2026.05.24&#10;#DSPMロリィタ部 サイン入りチェキ オンラインサイン会">
+    <span class="date">2026.05.24</span>
+    <span class="name">#DSPMロリィタ部<br>サイン入りチェキ オンラインサイン会</span>
+    <span class="venue">オンライン</span>
+    <span class="tag online">05.09と同衣装・同日撮影</span>
+  </button>
+  <button class="card" data-copy="2026.03.19&#10;Chalmiere Maisie紹介 Instagram Live">
+    <span class="date">2026.03.19</span>
+    <span class="name">Chalmiere Maisie紹介<br>Instagram Live</span>
+    <span class="venue">オンライン</span>
+    <span class="tag online">配信</span>
+  </button>
+</div>
+
+<!-- ─── 誌面 ─── -->
+<h2>雑誌・メディア</h2>
+<p class="h2note">P3（Merveille × えりさん生誕）／誌面は「目標の達成」として特別扱い</p>
+<div class="cards">
+  <button class="card" data-copy="2025.11.21&#10;IDOL FILE Vol.38 Lolita &amp; Gothic">
+    <span class="date">2025.11.21</span>
+    <span class="name">IDOL FILE Vol.38<br>Lolita &amp; Gothic</span>
+    <span class="venue">誌面参加</span>
+    <span class="tag">特別扱い</span>
+  </button>
+  <button class="card" data-copy="2026.01.30&#10;IDOL FILE Vol.39">
+    <span class="date">2026.01.30</span>
+    <span class="name">IDOL FILE Vol.39</span>
+    <span class="venue">誌面参加</span>
+    <span class="tag">軽め</span>
+  </button>
+  <button class="card" data-copy="2026.06.03&#10;Merveille vol.008">
+    <span class="date">2026.06.03</span>
+    <span class="name">Merveille vol.008</span>
+    <span class="venue">誌面参加（モデル）</span>
+    <span class="tag cheki">えりさん共演・P3の核</span>
+  </button>
+  <button class="card" data-copy="2026.07.17&#10;「Bonbon Amour」愛野えり バースデー記念（活動15周年）&#10;新宿ガルバホール">
+    <span class="date">2026.07.17</span>
+    <span class="name">「Bonbon Amour」<br>愛野えり バースデー記念（活動15周年）</span>
+    <span class="venue">新宿ガルバホール</span>
+    <span class="tag cheki">ライブゲスト・P3の核</span>
+  </button>
+</div>
+
+<!-- ─── くじ・アクスタ ─── -->
+<h2>マルシェくじ・アクスタ（5衣装ブロック）</h2>
+<p class="h2note">P2・A案固定。1衣装＝1ブロックで1年が一周する</p>
+<div class="cards">
+  <button class="card" data-copy="2025.10&#10;ねるねるハロウィンマルシェくじ ／ アクスタ">
+    <span class="date">2025.10.26 終了</span>
+    <span class="name">ハロウィン<br>マルシェくじ ＋ アクスタ</span>
+    <span class="venue">オンライン</span>
+    <span class="tag online">ブロック 1</span>
+  </button>
+  <button class="card" data-copy="2025.12&#10;ウィンターホリデーアクスタ ／ ねるねるChristmasマルシェくじ">
+    <span class="date">2025.12.16 / 12.20-24</span>
+    <span class="name">ウィンターホリデー／クリスマス<br>アクスタ ＋ マルシェくじ</span>
+    <span class="venue">オンライン</span>
+    <span class="tag online">ブロック 2</span>
+  </button>
+  <button class="card" data-copy="2026.02.11&#10;9周年記念制服アクリルスタンド（ディアステージ制服Ver.）">
+    <span class="date">2026.02.11</span>
+    <span class="name">9周年記念<br>制服アクリルスタンド</span>
+    <span class="venue">オンライン</span>
+    <span class="tag online">ブロック 3</span>
+  </button>
+  <button class="card" data-copy="2026.03&#10;ねるねるいちごマルシェくじ ／ いちごのおひめさまアクスタ">
+    <span class="date">2026.03.03-13</span>
+    <span class="name">いちご<br>マルシェくじ ＋ アクスタ</span>
+    <span class="venue">オンライン</span>
+    <span class="tag online">ブロック 4・お茶会Vol.5と同衣装</span>
+  </button>
+  <button class="card" data-copy="2026.05-06&#10;ねるねる紫陽花マルシェくじ ／ 雨の日のおでかけアクスタ">
+    <span class="date">2026.05.28-31 / 06.06</span>
+    <span class="name">紫陽花／雨の日のおでかけ<br>マルシェくじ ＋ アクスタ</span>
+    <span class="venue">オンライン</span>
+    <span class="tag online">ブロック 5</span>
+  </button>
+</div>
+
+<!-- ─── 除外 ─── -->
+<h2>ACT1 除外が確定しているもの</h2>
+<p class="h2note">誤って戻さないための記録</p>
+<div class="cards">
+  <button class="card" style="opacity:.5" data-copy="Chalmiere Instagram Live（2025.08.20）※ACT1除外">
+    <span class="date">2025.08.20</span>
+    <span class="name">Chalmiere公式Instagramライブ</span>
+    <span class="venue">除外：期間外・シンプル優先</span>
+  </button>
+  <button class="card" style="opacity:.5" data-copy="IDOL FILE Vol.38 オンラインサイン会 ※ACT1不掲載">
+    <span class="date">2025.11</span>
+    <span class="name">IDOL FILE Vol.38<br>オンラインサイン会</span>
+    <span class="venue">不掲載：新規ビジュアルなし</span>
+  </button>
+  <button class="card" style="opacity:.5" data-copy="ワンダーランドマルシェくじ ※削除（前年情報の誤り）">
+    <span class="date">2026.07.19-22</span>
+    <span class="name">ねるねるワンダーランド<br>マルシェくじ</span>
+    <span class="venue">削除：前年情報の誤り</span>
+  </button>
+  <button class="card" style="opacity:.5" data-copy="ねるっち（Twitch配信）※継続中">
+    <span class="date">継続中</span>
+    <span class="name">ねるっち（Twitch配信）</span>
+    <span class="venue">扱い未定</span>
+  </button>
+</div>
+
+<div class="note">
+  <p><strong>会場は全件確定。</strong>3行フォーマットで組めます。</p>
+  <p><strong>オンライン施策は会場行を持ちません。</strong>P2の5ブロックは3行目が空くので、そこに何を置くか（何もなし／期間表記／空欄のまま）は組んでみて判断。</p>
+</div>
+
+<footer>ねるねるシアター2026 ／ 2026.08.16 作成</footer>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+  var toast = document.getElementById('toast'), timer;
+  function show(msg) {
+    toast.textContent = msg;
+    toast.classList.add('on');
+    clearTimeout(timer);
+    timer = setTimeout(function () { toast.classList.remove('on'); }, 1800);
+  }
+  document.querySelectorAll('.card').forEach(function (card) {
+    card.addEventListener('click', function () {
+      var text = card.dataset.copy;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          show('コピーしました\n' + text);
+        }).catch(function () { show(text); });
+      } else { show(text); }
+    });
+  });
+</script>
+</body>
+</html>
